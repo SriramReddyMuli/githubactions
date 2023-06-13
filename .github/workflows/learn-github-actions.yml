@@ -9,9 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - env:
-          GITHUB_TOKEN: "hello sriram"
+          ISSUE_URL: "hello sriram"
         run: |
-          echo ${{GITHUB_TOKEN}}
+          echo ${{ISSUE_URL}}
       
 
 
