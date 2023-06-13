@@ -4,14 +4,19 @@ on:
   push:
     branches:
       - main
+env:
+  DAY_OF_WEEK: Monday
 jobs:
   test_env:
     runs-on: ubuntu-latest
+    env: 
+      WEEK_OF_MONTH: 4
     steps:
-      - env:
-          ISSUE_URL: "hello sriram"
-        run: |
-          echo ${{ISSUE_URL}}
+      - name: step 1
+        run: echo "$DAY_OF_WEEK and the week is $WEEK_OF_MONTH and name is $NAME"
+        env: 
+          NAME: "sriram"
+          
       
 
 
