@@ -2,8 +2,8 @@ name: learn-github-actions
 run-name: ${{github.actor}} is learning Github actions
 on: 
   push:
-    tags:
-      - batch_service_v*
+     branches:
+      - "main"
 env:
   DAY_OF_WEEK: Monday
 jobs:

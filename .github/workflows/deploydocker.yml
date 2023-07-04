@@ -2,7 +2,7 @@ name: ci
 on:
   push:
     branches:
-      - "main"
+      - "main1"
 jobs:
   build:
     runs-on: k8s-teddy
