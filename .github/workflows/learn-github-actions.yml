@@ -1,5 +1,5 @@
 name: learn-github-actions
-run-name: ${{github.actor}} is learing Github actions
+run-name: ${{github.actor}} is learning Github actions
 on: 
   push:
     tags:
@@ -7,6 +7,14 @@ on:
 env:
   DAY_OF_WEEK: Monday
 jobs:
+  calculate-version:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.vars.outputs.tag }}
+    steps:
+      - name: Get the version
+        id: vars
+        run: echo "tag=$(echo ${GITHUB_REF/refs\/tags\//})" >> $GITHUB_OUTPUT
   test_env:
     runs-on: ubuntu-latest
     env: 
