@@ -5,7 +5,7 @@ on:
     branches:
       - main
     tags:
-      - 'batch_service_v*'
+      - batch_service_v*
 env:
   DAY_OF_WEEK: Monday
 jobs:
