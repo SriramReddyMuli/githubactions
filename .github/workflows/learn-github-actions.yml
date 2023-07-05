@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Get the version
         id: vars
-        run: echo "tag=$(echo ${GITHUB_REF/refs\/tags\//})" >> $GITHUB_OUTPUT
+        run: echo "tag=$(echo ${GITHUB_REF/refs\/tags\//##*_})" >> $GITHUB_OUTPUT
   test_env:
     needs:
       - calculate-version
@@ -29,7 +29,7 @@ jobs:
           NAME: "sriram"
         run: echo "$DAY_OF_WEEK and the week is $WEEK_OF_MONTH and name is $NAME"
       - name: Step 2
-        run: echo "Building and releasing version ${{ needs.calculate-version.outputs.version##*_ }}"
+        run: echo "Building and releasing version ${{ needs.calculate-version.outputs.version }}"
       - name: step 3
         run: echo "What this is inside is the event ${{github.event_name}}"
       - name: step 4
