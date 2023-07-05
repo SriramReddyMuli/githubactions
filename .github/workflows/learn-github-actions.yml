@@ -5,7 +5,7 @@ on:
     branches:
       - main
     tags:
-      - batch_service_v*
+      - batch_service_*
 env:
   DAY_OF_WEEK: Monday
 jobs:
@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Get the version
         id: vars
-        run: echo "tag=$(echo ${GITHUB_REF/refs\/tags\//})" >> $GITHUB_OUTPUT
+        run: echo "tag=$(echo ${GITHUB_REF/refs\/tags\//} | grep -0 '\d.\d\.d')" >> $GITHUB_OUTPUT
   test_env:
     needs:
       - calculate-version
@@ -30,7 +30,6 @@ jobs:
         run: echo "$DAY_OF_WEEK and the week is $WEEK_OF_MONTH and name is $NAME"
       - name: Step 2
         run: echo "Building and releasing version ${{ needs.calculate-version.outputs.version }}"
-        if: ${{ (github.event_name != 'push') }}
       - name: step 3
         run: echo "What this is inside is the event ${{github.event_name}}"
   test_env2:
