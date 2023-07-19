@@ -14,7 +14,7 @@ env:
 jobs:
   calculate-version:
     runs-on: ubuntu-latest
-    if: ${{ (github.event_name == 'pull_request') || (github.event_name == 'release' && github.event.action == 'published' && startsWith(github.ref, 'batch_service_'))  }}
+    if: ${{ (github.event_name == 'pull_request') || (github.event_name == 'release' && github.event.action == 'published' && contains(github.ref, 'batch_service_'))  }}
     outputs:
       version: ${{ steps.vars.outputs.tag }}
     steps:
