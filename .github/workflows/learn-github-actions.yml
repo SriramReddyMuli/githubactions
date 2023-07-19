@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: env2 step1
-        run: echo "$DAY_OF_WEEK and the week is $WEEK_OF_MONTH and name is $NAME"
+        run: echo "sriram ${{ github.ref }}
 
         
           
