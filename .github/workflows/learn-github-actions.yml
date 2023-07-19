@@ -14,13 +14,15 @@ env:
 jobs:
   calculate-version:
     runs-on: ubuntu-latest
-    if: ${{ (github.event_name == 'pull_request') || (github.event_name == 'release' && github.event.action == 'published' && startsWith(${GITHUB_REF/refs\/tags\//}, 'batch_service_'))  }}
+    if: ${{ (github.event_name == 'pull_request') || (github.event_name == 'release' && github.event.action == 'published' && startsWith(github.ref, 'batch_service_'))  }}
     outputs:
       version: ${{ steps.vars.outputs.tag }}
     steps:
       - name: Get the version
         id: vars
-        run: echo "tag=$(echo ${GITHUB_REF/refs\/tags\//} | awk -F_ '{print $NF}')" >> $GITHUB_OUTPUT
+        run: |
+          echo "sriram ${{ github.ref }}
+          echo "tag=$(echo ${GITHUB_REF/refs\/tags\//} | awk -F_ '{print $NF}')" >> $GITHUB_OUTPUT
   test_env:
     needs:
       - calculate-version
