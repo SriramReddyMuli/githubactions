@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: env2 step1
-        run: echo "sriram ${{ github.ref }}
+        run: echo "sriram ${{ github.ref }}"
 
         
           
